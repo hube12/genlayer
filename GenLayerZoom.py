@@ -3,14 +3,15 @@ import numpy as np
 
 
 class GenLayerZoom(Main):
-    def __init__(self, seed, layer):
+    def __init__(self, seed, layer,fuzzy, goup):
         super().__init__(seed)
-        self.parent = layer
+        self.parent = [(layer, goup)]
+        self.fuzzy=fuzzy
 
     def getInts(self, aX, aY, aW, aH):
         i, j, k, l = aX >> 1, aY >> 1, (aW >> 1) + 2, (aH >> 1) + 2
 
-        aint = self.parent.getInts(i, j, k, l)
+        aint = self.parent[0][0].getInts(i, j, k, l)
         i1 = (k - 1) << 1
         j1 = (l - 1) << 1
         aint1 = [0] * (i1 * j1)
@@ -26,15 +27,22 @@ class GenLayerZoom(Main):
                 aint1[l1 + i1] = self.selectRandom([j2, k2])
                 l1 += 1
                 aint1[l1] = self.selectRandom([j2, l2])
-                aint1[l1 + i1] = self.selectModeOrRandom(j2, l2, k2, i3)
+                if self.fuzzy:
+                    aint1[l1 + i1] = self.selectRandom([j2, l2, k2, i3])
+                else:
+                    aint1[l1 + i1] = self.selectModeOrRandom(j2, l2, k2, i3)
                 j2, k2 = l2, i3
-        aint2 = np.empty(aW*aH,dtype=int)
+        aint2 = np.empty(aW * aH, dtype=int)
         for j3 in range(aH):
-            aint2[j3 * aW:(j3+1)*aW] = np.copy(aint1[(j3 + (aY & 1)) * i1 + (aX & 1): (j3 + (aY & 1)) * i1 + (aX & 1)+aW])
-        print("zoom",self.countIt(aint2))
+            aint2[j3 * aW:(j3 + 1) * aW] = np.copy(
+                aint1[(j3 + (aY & 1)) * i1 + (aX & 1): (j3 + (aY & 1)) * i1 + (aX & 1) + aW])
+        if self.fuzzy:
+            print("fuzzy zoom", self.countIt(aint2))
+        else:
+            print("zoom", self.countIt(aint2))
         return aint2
 
-    def magnify(seed, layer, coeff):
+    def magnify(seed, layer, coeff,fuzzy, goup):
         for i in range(coeff):
-            layer = GenLayerZoom(seed + i, layer)
+            layer = GenLayerZoom(seed + i, layer,fuzzy, goup)
         return layer

@@ -2,13 +2,13 @@ from genLayer import Main
 import numpy as np
 
 class GenLayerBiome(Main):
-    def __init__(self, seed, layer,customized):
+    def __init__(self, seed, layer,customized,goup):
         super().__init__(seed)
-        self.parent = layer
+        self.parent = [(layer,goup)]
         if customized[0]==4:
             print("I dont support WorldType.DEFAULT_1_1")
     def getInts(self, aX, aY, aW, aH):
-        aint = self.parent.getInts(aX, aY, aW, aH)
+        aint = self.parent[0][0].getInts(aX, aY, aW, aH)
         aint1 = np.empty(aW*aH,dtype=int)
         for i in range(aH):
             for j in range(aW):

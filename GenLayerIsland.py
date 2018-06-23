@@ -4,6 +4,7 @@ import numpy as np
 class GenLayerIsland(Main):
     def __init__(self, seed):
         super().__init__(seed)
+        self.parent=[]
 
     def getInts(self, aX, aY, aW, aH):
         aint = np.empty(aW*aH,dtype=int)

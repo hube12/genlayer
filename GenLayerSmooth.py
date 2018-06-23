@@ -2,14 +2,14 @@ from genLayer import Main
 import numpy as np
 
 class GenLayerSmooth(Main):
-    def __init__(self, seed, layer):
+    def __init__(self, seed, layer,goup):
         super().__init__(seed)
-        self.parent = layer
+        self.parent = [(layer,goup)]
 
 
     def getInts(self, aX, aY, aW, aH):
         i, j, k, l = aX - 1, aY - 1, aW + 2, aH + 2
-        aint = self.parent.getInts(i, j, k, l)
+        aint = self.parent[0][0].getInts(i, j, k, l)
         aint1 = np.empty(aW*aH,dtype=int)
         for i1 in range(aH):
             for j1 in range(aW):
@@ -30,4 +30,5 @@ class GenLayerSmooth(Main):
                     if i2==j2:
                         k2=i2
                 aint1[j1+i1*aW]=k2
+        print("smooth",self.countIt(aint1))
         return aint1

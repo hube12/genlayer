@@ -3,9 +3,9 @@ import numpy as np
 
 
 class GenLayerVoronoiZoom(Main):
-    def __init__(self, seed, layer):
+    def __init__(self, seed, layer,goup):
         super().__init__(seed)
-        self.parent = layer
+        self.parent = [(layer,goup)]
 
     def getInts(self, aX, aY, aW, aH):
         aX -= 2
@@ -14,7 +14,7 @@ class GenLayerVoronoiZoom(Main):
         j = aY >> 2
         k = (aW >> 2) + 2
         l = (aH >> 2) + 2
-        aint = self.parent.getInts(i, j, k, l)
+        aint = self.parent[0][0].getInts(i, j, k, l)
         i1 = k - 1 << 2
         j1 = k - 1 << 2
         aint1 = np.empty(i1 * j1,dtype=int)
@@ -59,4 +59,5 @@ class GenLayerVoronoiZoom(Main):
         aint2 = np.empty(aW*aH,dtype=int)
         for l3 in range(aH):
             aint2[l3 * aW:(l3 + 1) * aW] = np.copy(aint1[(l3 + (aY & 3)) * i1 + (aX & 3):(l3 + (aY & 3)) * i1 + (aX & 3) + aW])
+        print("voronoi",self.countIt(aint2))
         return aint2

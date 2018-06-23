@@ -2,14 +2,14 @@ from genLayer import Main
 import numpy as np
 
 class GenLayerHills(Main):
-    def __init__(self, seed, layer, river):
+    def __init__(self, seed, layer, river,goup):
         super().__init__(seed)
-        self.parent = layer
-        self.riverLayer = river
+        self.parent = [(layer,goup),(river,goup)]
+
 
     def getInts(self, aX, aY, aW, aH):
-        aint = self.parent.getInts(aX - 1, aY - 1, aW + 2, aH + 2)
-        aint1 = self.parent.getInts(aX - 1, aY - 1, aW + 2, aH + 2)
+        aint = self.parent[0][0].getInts(aX - 1, aY - 1, aW + 2, aH + 2)
+        aint1 = self.parent[1][0].getInts(aX - 1, aY - 1, aW + 2, aH + 2)
         aint2 = np.empty(aW*aH,dtype=int)
         for i in range(aH):
             for j in range(aW):
@@ -79,4 +79,5 @@ class GenLayerHills(Main):
                             aint2[j+i*aW]=j2
                         else:
                             aint2[j + i * aW] = k
+        print("hills",self.countIt(aint2))
         return aint2

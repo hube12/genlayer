@@ -2,12 +2,12 @@ from genLayer import Main
 import numpy as np
 
 class GenLayerRareBiome(Main):
-    def __init__(self, seed, layer):
+    def __init__(self, seed, layer,goup):
         super().__init__(seed)
-        self.parent = layer
+        self.parent = [(layer,goup)]
 
     def getInts(self, aX, aY, aW, aH):
-        aint = self.parent.getInts(aX - 1, aY - 1, aW + 2, aH + 2)
+        aint = self.parent[0][0].getInts(aX - 1, aY - 1, aW + 2, aH + 2)
         aint1 = np.empty(aW*aH,dtype=int)
         for i in range(aH):
             for j in range(aW):
@@ -20,4 +20,5 @@ class GenLayerRareBiome(Main):
                         aint1[j + i * aW] =k
                 else:
                     aint1[j + i * aW] =k
+        print("rare",self.countIt(aint1))
         return aint1
