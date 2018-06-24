@@ -43,6 +43,7 @@ class GenLayerBiomeEdge(Main):
                     else:
                         aint1[j + i * aW] = k
         print("biome edge",self.countIt(aint1))
+        print(self.worldGenSeed)
         return aint1
 
     def replaceBiomeEdgeIfNecessary(self, aint, aint1, j1, i1, aW, k1, biome1, biome2):

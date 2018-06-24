@@ -31,4 +31,5 @@ class GenLayerSmooth(Main):
                         k2=i2
                 aint1[j1+i1*aW]=k2
         print("smooth",self.countIt(aint1))
+        print(aX,aY,aW,aH)
         return aint1

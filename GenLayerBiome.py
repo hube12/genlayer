@@ -42,6 +42,7 @@ class GenLayerBiome(Main):
                     aint1[j + i * aW]=[12,12,12,30][self.nextIntGen(4)] #ice plains (flats),cold taiga
                 else:
                     aint1[j + i * aW]=14 #mushroom again
+        print(aW, aH, aX, aY)
         print("biome",self.countIt(aint1))
         return aint1
 

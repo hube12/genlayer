@@ -8,7 +8,9 @@ class GenLayerHills(Main):
 
 
     def getInts(self, aX, aY, aW, aH):
+        print("hills1")
         aint = self.parent[0][0].getInts(aX - 1, aY - 1, aW + 2, aH + 2)
+        print("hills2")
         aint1 = self.parent[1][0].getInts(aX - 1, aY - 1, aW + 2, aH + 2)
         aint2 = np.empty(aW*aH,dtype=int)
         for i in range(aH):
@@ -17,6 +19,7 @@ class GenLayerHills(Main):
                 k = aint[j + 1 + (i + 1) * (aW + 2)]
                 l = aint1[j + 1 + (i + 1) * (aW + 2)]
                 flag = not ((l - 2) % 29)
+
                 if k > 255:
                     print("error old!")
                 flag1 = self.isValidId(k) and k in [129, 130, 131, 132, 133, 134, 140, 149, 151, 155, 156, 157, 158,
@@ -34,22 +37,34 @@ class GenLayerHills(Main):
                 elif self.nextIntGen(3) and not flag:
                     aint2[j + i * aW] = k
                 else:
+
                     biome1 = k
                     hillTransformation = {2: 17, 4: 18, 27: 28, 29: 1, 5: 19, 32: 33, 30: 31,
-                                          1: 4 if self.nextIntGen(3) else 18, 12: 13, 21: 22, 0: 24, 3: 34, 35: 36}
+                                          12: 13, 21: 22, 0: 24, 3: 34, 35: 36}
                     for el in hillTransformation:
                         if k == el:
+
                             biome1 = hillTransformation[el]
+
                     if biome1 == k:
+                        if k==1:
+                            if self.nextIntGen(3):
+                                biome1=4
+                            else:
+                                biome1=18
                         if self.biomesEqualOrMesaPlateau(k, 38):  # mesarock
-                            biome1 = 37
-                        elif k == 24 and self.nextIntGen(3) == 0:
+                            biome1 = 37 #mesa
+                        elif k == 24 and self.nextIntGen(3) == 0: #deep ocean
+
                             i1 = self.nextIntGen(2)
+
                             if i1:
                                 biome1 = 4
                             else:
                                 biome1 = 1
+
                     j2 = biome1
+
                     if flag and biome1 != k:
                         mappingMutation = {1: 129, 2: 130, 3: 131, 4: 132, 5: 133, 6: 134, 12: 140, 21: 149, 23: 151,
                                            27: 155, 28: 156, 29: 157, 30: 158, 32: 160, 33: 161, 34: 162, 35: 163,
@@ -79,5 +94,8 @@ class GenLayerHills(Main):
                             aint2[j+i*aW]=j2
                         else:
                             aint2[j + i * aW] = k
+        print(aW, aH, aX, aY)
         print("hills",self.countIt(aint2))
+
+
         return aint2

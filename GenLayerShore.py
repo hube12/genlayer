@@ -67,6 +67,7 @@ class GenLayerShore(Main):
                             aint1[j + i * aW] = k
                 else:
                     self.replaceIfNeighborOcean(aint, aint1, j, i, aW, k, 25)  # stone beach
+        print(aW,aH,aX,aY)
         print("shore",self.countIt(aint1))
         return aint1
 

@@ -21,5 +21,6 @@ class GenLayerRemoveTooMuchOcean(Main):
                 self.initChunkSeed((j1 + aX, i1 + aY))
                 if (not k2 and not k1 and not l1 and not i2 and not j2 and not self.nextIntGen(2)):
                     aint1[j1 + i1 * aW] = 1
+        print(aW, aH, aX, aY)
         print("removeTooMuchOcean",self.countIt(aint1))
         return aint1

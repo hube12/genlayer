@@ -59,5 +59,7 @@ class GenLayerVoronoiZoom(Main):
         aint2 = np.empty(aW*aH,dtype=int)
         for l3 in range(aH):
             aint2[l3 * aW:(l3 + 1) * aW] = np.copy(aint1[(l3 + (aY & 3)) * i1 + (aX & 3):(l3 + (aY & 3)) * i1 + (aX & 3) + aW])
+        print(aW, aH, aX, aY,"voronoi")
         print("voronoi",self.countIt(aint2))
+        print(self.worldGenSeed)
         return aint2
