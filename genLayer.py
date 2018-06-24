@@ -1,32 +1,3 @@
-"""
-public static final WorldType[] WORLD_TYPES = new WorldType[16];
-
-    /** Default world type. */
-    public static final WorldType DEFAULT = (new WorldType(0, "default", 1)).setVersioned();
-
-    /** Flat world type. */
-    public static final WorldType FLAT = new WorldType(1, "flat");
-
-    /** Large Biome world Type. */
-    public static final WorldType LARGE_BIOMES = new WorldType(2, "largeBiomes");
-
-    /** amplified world type */
-    public static final WorldType AMPLIFIED = (new WorldType(3, "amplified")).setNotificationData();
-    public static final WorldType CUSTOMIZED = new WorldType(4, "customized");
-    public static final WorldType DEBUG_WORLD = new WorldType(5, "debug_all_block_states");
-
-    /** Default (1.1) world type. */
-    public static final WorldType DEFAULT_1_1 = (new WorldType(8, "default_1_1", 0)).setCanBeCreated(false);
-
-
-    if we create a customized world we expecty chunk composition to change but not biome so chunkComposition doesnt matter
-
-    if (worldTypeIn == WorldType.CUSTOMIZED && !options.isEmpty())
-        {
-            this.chunkComposition= ChunkGeneratorSettings.Factory.jsonToFactory(options).build();
-        }
-
-"""
 import numpy as np
 from collections import Counter
 from copy import deepcopy
