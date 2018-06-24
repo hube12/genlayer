@@ -60,7 +60,6 @@ class GenLayerAddIsland(Main):
                     else:
                         aint1[j1 + i1 * aW] = 0
                     #print(i3, self.chunkSeed,self.baseSeed,self.worldGenSeed,k1,l1,i2,j2,aint1[j1 + i1 * aW])
-        print(aW, aH, aX, aY)
-        print("addislan",self.countIt(aint1))
+
 
         return aint1

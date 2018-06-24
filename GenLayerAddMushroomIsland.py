@@ -21,6 +21,5 @@ class GenLayerAddMushroomIsland(Main):
                     aint1[j1+i1*aW]=14 #mushroom_island
                 else:
                     aint1[j1 + i1 * aW]=k2
-        print(aW, aH, aX, aY)
-        print("mushroom",self.countIt(aint1))
+
         return aint1

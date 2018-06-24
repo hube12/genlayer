@@ -42,8 +42,7 @@ class GenLayerBiomeEdge(Main):
                             aint1[j + i * aW] = 1  # plains
                     else:
                         aint1[j + i * aW] = k
-        print("biome edge",self.countIt(aint1))
-        print(self.worldGenSeed)
+
         return aint1
 
     def replaceBiomeEdgeIfNecessary(self, aint, aint1, j1, i1, aW, k1, biome1, biome2):
@@ -71,9 +70,9 @@ class GenLayerBiomeEdge(Main):
             l = aint[j1 + 1 + (i1 + 2) * (aW + 2)]
             if self.biomesEqualOrMesaPlateau(i, biome1) and self.biomesEqualOrMesaPlateau(j, biome1) \
                     and self.biomesEqualOrMesaPlateau(k, biome1) and self.biomesEqualOrMesaPlateau(l, biome1):
-                aint1[j + i * aW] = k1
+                aint1[j1 + i1 * aW] = k1
             else:
-                aint1[j + i * aW] = biome2
+                aint1[j1 + i1 * aW] = biome2
         return True
 
     def canBiomesBeNeighbors(self, biome1, biome2):

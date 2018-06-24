@@ -7,7 +7,7 @@ class GenLayerIsland(Main):
         self.parent=[]
 
     def getInts(self, aX, aY, aW, aH):
-        print("islandStart")
+
         aint = np.empty(aW*aH,dtype=int)
         for i in range(aH):
             for j in range(aW):
@@ -17,5 +17,5 @@ class GenLayerIsland(Main):
         if 0 >= aX > -aW and 0 >= aY > -aH:
             aint[-aX - aY * aW] = 1
 
-        print(aW, aH, aX, aY)
+
         return aint

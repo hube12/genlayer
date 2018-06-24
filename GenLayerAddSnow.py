@@ -25,6 +25,5 @@ class GenLayerAddSnow(Main):
                     else:
                         l1 = 1
                     aint1[j1 + i1 * aW] = l1
-        print(aW, aH, aX, aY)
-        print("snow",self.countIt(aint1))
+
         return aint1

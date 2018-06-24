@@ -20,5 +20,5 @@ class GenLayerRareBiome(Main):
                         aint1[j + i * aW] =k
                 else:
                     aint1[j + i * aW] =k
-        print("rare",self.countIt(aint1))
+
         return aint1

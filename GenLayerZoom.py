@@ -44,12 +44,8 @@ class GenLayerZoom(Main):
         for j3 in range(aH):
             aint2[j3 * aW:(j3 + 1) * aW] = np.copy(
                 aint1[(j3 + (aY & 1)) * i1 + (aX & 1): (j3 + (aY & 1)) * i1 + (aX & 1) + aW])
-        print(aW, aH, aX, aY)
-        if self.fuzzy:
-            print("fuzzy zoom", self.countIt(aint2))
-        else:
-            print("zoom", self.countIt(aint2))
-            print("eee",self.chunkSeed,self.worldGenSeed,self.baseSeed)
+
+
         return aint2
 
     def magnify(seed, layer, coeff,fuzzy, goup,switch):

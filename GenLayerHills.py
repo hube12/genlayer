@@ -8,9 +8,9 @@ class GenLayerHills(Main):
 
 
     def getInts(self, aX, aY, aW, aH):
-        print("hills1")
+
         aint = self.parent[0][0].getInts(aX - 1, aY - 1, aW + 2, aH + 2)
-        print("hills2")
+
         aint1 = self.parent[1][0].getInts(aX - 1, aY - 1, aW + 2, aH + 2)
         aint2 = np.empty(aW*aH,dtype=int)
         for i in range(aH):
@@ -94,8 +94,7 @@ class GenLayerHills(Main):
                             aint2[j+i*aW]=j2
                         else:
                             aint2[j + i * aW] = k
-        print(aW, aH, aX, aY)
-        print("hills",self.countIt(aint2))
+
 
 
         return aint2

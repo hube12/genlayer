@@ -30,6 +30,4 @@ class GenLayerSmooth(Main):
                     if i2==j2:
                         k2=i2
                 aint1[j1+i1*aW]=k2
-        print("smooth",self.countIt(aint1))
-        print(aX,aY,aW,aH)
         return aint1

@@ -13,5 +13,5 @@ class GenLayerRiverInit(Main):
             for j in range(aW):
                 self.initChunkSeed((j + aX, i + aY))
                 aint1[j+i*aW]=self.nextIntGen(299999)+2 if  aint[j+i*aW] else 0
-        print("river init",self.countIt(aint1))
+
         return aint1

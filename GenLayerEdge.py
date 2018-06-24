@@ -33,8 +33,7 @@ class GenLayerEdge(Main):
                     if flag or flag1:
                         k1 = 2
                 aint1[j1 + i1 * aW] = k1
-        print(aW, aH, aX, aY)
-        print('cool/warm',self.countIt(aint1))
+
         return aint1
 
     def getIntsHeatIce(self, aX, aY, aW, aH):
@@ -55,8 +54,7 @@ class GenLayerEdge(Main):
                     if flag or flag1:
                         k1 = 3
                 aint1[j1 + i1 * aW] = k1
-        print(aW, aH, aX, aY)
-        print('heat/ice', self.countIt(aint1))
+
         return aint1
 
     def getIntsSpecial(self, aX, aY, aW, aH):
@@ -68,8 +66,7 @@ class GenLayerEdge(Main):
                 k = aint[j + (i) * aW]
                 if k and not self.nextIntGen(13):
                     k |= 1 + self.nextIntGen(15) << 8 & 3840
-                    print("specialk",k)
+
                 aint1[j + i * aW] = k
-        print(aW, aH, aX, aY)
-        print('special', self.countIt(aint1))
+
         return aint1

@@ -164,8 +164,9 @@ class Main:
 
         return [genlayerrivermix, genlayer3, genlayerrivermix][1]
 
-    def matchBiomes(self, master, indice, seed, customized):
-        biomeId, px, pz = master[indice]
+    def matchBiomes(self, master, indice, customized):
+        seed,biomeId, px, pz = master[indice]
+
         genlayerFinal = self.genlayer(seed, customized)
         l=genlayerFinal.getInts(px, pz, 1,1)
 
@@ -297,16 +298,29 @@ import GenLayerRareBiome as g16
 import GenLayerShore as g17
 import GenLayerRiverMix as g18
 import GenLayerVoronoiZoom as g19
-
+import time
 if __name__ == "__main__":
     m = Main()
     customized = [0, "", "", [""]]
-    #seed = -8538029006561530318
+    seed = -8538029006561530318
     #seed=-3058911107724324904
-    #l = [(34,15477,10031),(2,501,52023),(134,380,5009),(24, 0,0),(129, 809, 541)]  # deep ocean
-    l=[]
-    with open("test_values.txt",r) as top:
-        seed,id,x,z=top.readline()
-        l.append((seed,id,x,z))
-    print(l)
-    #print(m.matchBiomes(l, 0, seed, customized))
+    l = [(seed,34,15477,10031),(2,501,52023),(134,380,5009),(24, 0,0),(129, 809, 541)]  # deep ocean
+    print(m.matchBiomes(l, 0,  customized))
+    flag=1
+    if flag:
+        l=[]
+        with open("biomes.txt","r") as top:
+            for el in top:
+
+                seed,id,x,z=map(int,el.rstrip().split(","))
+                l.append((seed,id,x,z))
+        i=0
+        t=time.time()
+        for el in l:
+
+            m.matchBiomes(l, i, customized)
+            i+=1
+            if i==1000:
+                print(t-time.time())
+        print(i)
+        print(t - time.time())

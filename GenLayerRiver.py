@@ -21,7 +21,7 @@ class GenLayerRiver(Main):
                     aint1[j1 + i1 * aW] = -1
                 else:
                     aint1[j1 + i1 * aW] = 7
-        print("river",self.countIt(aint1))
+
         return aint1
 
     def riverFilter(self, biomeId):
