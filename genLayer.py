@@ -24,6 +24,7 @@ class Main:
         self.chunkSeed += chunk[0]
         self.chunkSeed *= (self.chunkSeed * 6364136223846793005 + 1442695040888963407)
         self.chunkSeed += chunk[1]
+        self.chunkSeed=self.javaInt64(self.chunkSeed)
         self.chunkSeed *= (self.chunkSeed * 6364136223846793005 + 1442695040888963407)
         self.chunkSeed += chunk[0]
         self.chunkSeed *= (self.chunkSeed * 6364136223846793005 + 1442695040888963407)
@@ -159,9 +160,9 @@ class Main:
         flag = False
         biomeClass = {"ocean": [0, 10, 24],
                       "plains": [1, 129],
-                      "desert": [2, 17, 27, 28, 29, 130],
+                      "desert": [2, 17, 130],
                       "hills": [3, 20, 34, 131, 162],
-                      "forest": [4, 18, 132, 157],
+                      "forest": [4, 18, 132, 157,27, 28, 29],
                       "taiga": [5, 19, 30, 31, 32, 33, 133, 158, 160, 161],
                       "swamp": [6, 134],
                       "river": [7, 11],
