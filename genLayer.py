@@ -202,7 +202,7 @@ class Main:
                     return biomeA == biomeB or self.sameClass(biomeA, biomeB)
 
                 else:
-                    return biomeB != 38 or biomeB != 39
+                    return biomeB == 38 or biomeB == 39
             else:
                 return False
 
@@ -271,7 +271,17 @@ import GenLayerShore as g17
 import GenLayerRiverMix as g18
 import GenLayerVoronoiZoom as g19
 import time
+
+def show():
+    m = Main()
+    customized = [0, "", "", [""]]
+    seed = 1306145184061456995
+    genlayerFinal = m.genlayer(seed, customized)
+    l = genlayerFinal.getInts(-115, -96, 1, 1)
+    print(l)
+    
 if __name__ == "__main__":
+    
     m = Main()
     customized = [0, "", "", [""]]
     seed = -8538029006561530318
